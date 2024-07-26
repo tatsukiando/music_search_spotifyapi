@@ -9,7 +9,7 @@ import pandas as pd
 def create_mongodb_connection():
     user = 'user'
     pwd = 'password'
-    client = pymongo.MongoClient('mongodb://'+user+':'+pwd+'host')
+    client = pymongo.MongoClient('mongodb://'+user+':'+pwd+'server')
     db = client['cliant']
     return db
 
