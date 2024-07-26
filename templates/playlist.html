@@ -1,0 +1,22 @@
+<div>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>あなたのプレイリスト</h1>
+    <ul>
+    {% for track in tracks %}
+    <li>{{ track.name }} by {{ track.artist }} - <a href="{{ track.url }}">Listen on Spotify</a>
+    <form action="/playlist" method="post">
+      <input type="hidden" name="del" value="1">
+      <input type="hidden" name="name" value="{{ track.name }}">
+      <input type="hidden" name="artist" value="{{ track.artist }}">
+      <input type="hidden" name="url" value="{{ track.url }}">
+		<button type="submit">削除</button>
+    </form>
+    </li>
+    {% endfor %}
+    </ul>
+    <a href="/">ホームに戻る</a>
+</body>
+</div>

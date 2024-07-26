@@ -1,0 +1,49 @@
+<h1>曲検索</h1>
+<div>
+  0〜1の範囲で数値を入力してください。
+    <form action="/" method="post">
+        <label for="acousticness">Acousticness(アコースティック感):</label>
+        <input type="text" id="acousticness" name="acousticness" required><br>
+        <label for="danceability">Danceability(踊れる曲かどうか):</label>
+        <input type="text" id="danceability" name="danceability" required><br>
+        <label for="energy">Energy(エネルギッシュさ):</label>
+        <input type="text" id="energy" name="energy" required><br>
+        <label for="instrumentalness">Instrumentalness(インスト感):</label>
+        <input type="text" id="instrumentalness" name="instrumentalness" required><br>
+        <label for="liveness">Liveness(ライブ感):</label>
+        <input type="text" id="liveness" name="liveness" required><br>
+        <label for="loudness">Loudness(音量・音圧):</label>
+        <input type="text" id="loudness" name="loudness" required><br>
+        <label for="mode">Mode(マイナーコード（0）/メジャーコード（1）):</label>
+        <input type="text" id="mode" name="mode" required><br>
+        <label for="speechiness">Speechiness(言葉がどれくらい入っているか):</label>
+        <input type="text" id="speechiness" name="speechiness" required><br>
+        <label for="tempo">Tempo(テンポ):</label>
+        <input type="text" id="tempo" name="tempo" required><br>
+        <label for="valence">Valence(悲観的（0）〜楽観的（1）):</label>
+        <input type="text" id="valence" name="valence" required><br>
+	<label for="num">表示件数:</label>
+        <input type="text" id="num" name="num" required><br>
+        <button type="submit">検索</button>
+    </form>
+    
+    <p><a href="/playlist">プレイリスト</a></p>
+
+    {% if results %}
+        <h2>検索結果</h2>
+        <ul>
+        {% for result in results %}
+            <li>{{ result.name }} by {{ result.artist }} - <a href="{{ result.url }}">Listen on Spotify</a>
+            <form action="/add_to_playlist" method="post">
+                <input type="hidden" name="name" value="{{ result.name }}">
+                <input type="hidden" name="url" value="{{ result.url }}">
+                <input type="hidden" name="artist" value="{{ result.artist }}">
+                <button type="submit">プレイリストに追加</button>
+            </form>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>曲を検索してください。</p>
+    {% endif %}
+</div>
