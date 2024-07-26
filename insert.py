@@ -7,15 +7,15 @@ from requests.exceptions import HTTPError
 import pandas as pd
 
 def create_mongodb_connection():
-    user = 's2210266'
-    pwd = 'G3Y9HQ0g'
-    client = pymongo.MongoClient('mongodb://'+user+':'+pwd+'@dbs1.slis.tsukuba.ac.jp:27018')
-    db = client['s2210266_rep']
+    user = 'user'
+    pwd = 'password'
+    client = pymongo.MongoClient('mongodb://'+user+':'+pwd+'host')
+    db = client['cliant']
     return db
 
 
-client_id = '474187610e3e4959bd18d363bb878182'
-client_secret = 'b0bb499dc6c048adb5996fcccd343ac9'
+client_id = 'client_id'
+client_secret = 'client_secret'
 
 # 認証情報を設定
 client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
@@ -93,4 +93,4 @@ for i in range(1,60):
     track_list.append(add)
 #print(track_list)
 #db = create_mongodb_connection()
-#result_tmp=db.report.insert_many(track_list)
+#result_tmp=db.dbname.insert_many(track_list)
